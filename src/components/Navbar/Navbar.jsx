@@ -1,93 +1,183 @@
 import React, { useState } from "react";
-import { Menu, X } from "lucide-react"; // icons
+import { Menu, X } from "lucide-react";
+import { Link } from "react-scroll"; // ✅ import react-scroll
 import logo from "../../assets/logo.png";
 
 const NavbarMenu = [
-  { id: 1, title: "Accueil", path: "/" },
-  { id: 2, title: "Services", path: "#services" },
-  { id: 3, title: "A propos", path: "#about" },
-  { id: 4, title: "Notre Team", path: "#team" },
-  { id: 5, title: "Contact", path: "#contact" },
+  { id: 1, title: "Accueil", path: "hero" },
+  { id: 2, title: "Services", path: "services" },
+  { id: 3, title: "A propos", path: "about" },
+  { id: 4, title: "Notre Team", path: "team" },
+  { id: 5, title: "Contact", path: "contact" },
 ];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [showForm, setShowForm] = useState(false); // ✅ popup devis
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const subject = encodeURIComponent("Demande de devis");
+    const body = encodeURIComponent(`
+Nom complet : ${formData.get("nom")}
+Email : ${formData.get("email")}
+Entreprise : ${formData.get("entreprise")}
+Message : ${formData.get("message")}
+    `);
+    window.location.href = `mailto:paradisenumerique@gmail.com?subject=${subject}&body=${body}`;
+    setShowForm(false); // ferme le formulaire après l'envoi
+  };
+
   return (
-    <nav className="border-b border-gray-200 shadow-md bg-white sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        {/* Logo */}
-        <div className="flex items-center gap-2">
-          <img src={logo} alt="logo" className="h-10 w-auto" />
+    <>
+      <nav className="border-b border-gray-200 shadow-md bg-white sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+          {/* Logo */}
+          <div className="flex items-center gap-2">
+            <img src={logo} alt="logo" className="h-10 w-auto" />
+          </div>
+
+          {/* Menu Desktop */}
+          <div className="hidden lg:flex items-center gap-6">
+            <ul className="flex items-center gap-4">
+              {NavbarMenu.map((menu) => (
+                <li key={menu.id}>
+                  <Link
+                    to={menu.path}
+                    smooth={true}
+                    duration={600}
+                    offset={-80}
+                    className="inline-block py-2 px-3 cursor-pointer hover:text-blue-500 relative group"
+                  >
+                    {menu.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <button
+              onClick={() => setShowForm(true)}
+              className="primary-btn"
+            >
+              Demander un devis
+            </button>
+          </div>
+
+          {/* Menu Mobile Button */}
+          <div className="lg:hidden">
+            <button onClick={toggleMenu}>
+              {isOpen ? <X size={28} /> : <Menu size={28} />}
+            </button>
+          </div>
         </div>
 
-        {/* Menu Desktop */}
-        <div className="hidden lg:flex items-center gap-6">
-          <ul className="flex items-center gap-4">
+        {/* Sidebar Mobile */}
+        <div
+          className={`fixed top-0 right-0 w-2/3 h-full bg-white shadow-lg z-40 transform ${
+            isOpen ? "translate-x-0" : "translate-x-full"
+          } transition-transform duration-300 ease-in-out`}
+        >
+          <div className="flex justify-between items-center px-6 py-4 border-b">
+            <img src={logo} alt="logo" className="h-10" />
+            <button onClick={toggleMenu}>
+              <X size={28} />
+            </button>
+          </div>
+
+          <ul className="flex flex-col items-start px-6 py-6 space-y-6">
             {NavbarMenu.map((menu) => (
-              <li key={menu.id}>
-                <a
-                  href={menu.path}
-                  className="inline-block py-2 px-3 hover:text-blue-500 relative group"
+              <li key={menu.id} className="w-full">
+                <Link
+                  to={menu.path}
+                  smooth={true}
+                  duration={600}
+                  offset={-80}
+                  onClick={() => setIsOpen(false)}
+                  className="block w-full py-2 text-lg font-medium text-gray-700 cursor-pointer hover:text-blue-500 transition"
                 >
                   {menu.title}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
-          <button className="primary-btn">Demander un devis</button>
+
+          <div className="px-6 mt-6">
+            <button
+              onClick={() => {
+                setShowForm(true);
+                setIsOpen(false);
+              }}
+              className="primary-btn w-full"
+            >
+              Demander un devis
+            </button>
+          </div>
         </div>
 
-        {/* Menu Mobile Button */}
-        <div className="lg:hidden">
-          <button onClick={toggleMenu}>
-            {isOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
-        </div>
-      </div>
+        {/* Overlay sombre */}
+        {isOpen && (
+          <div
+            onClick={toggleMenu}
+            className="fixed inset-0 bg-black bg-opacity-40 z-30 lg:hidden"
+          ></div>
+        )}
+      </nav>
 
-      {/* Sidebar Mobile */}
-      <div
-        className={`fixed top-0 right-0 w-2/3 h-full bg-white shadow-lg z-40 transform ${
-          isOpen ? "translate-x-0" : "translate-x-full"
-        } transition-transform duration-300 ease-in-out`}
-      >
-        <div className="flex justify-between items-center px-6 py-4 border-b">
-          <img src={logo} alt="logo" className="h-10" />
-          <button onClick={toggleMenu}>
-            <X size={28} />
-          </button>
-        </div>
+      {/* Formulaire de devis popup */}
+      {showForm && (
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
+          <div className="bg-white p-8 rounded-2xl shadow-lg w-full max-w-md relative">
+            <button
+              onClick={() => setShowForm(false)}
+              className="absolute top-3 right-4 text-gray-500 hover:text-red-500 text-2xl font-bold"
+            >
+              &times;
+            </button>
 
-        <ul className="flex flex-col items-start px-6 py-6 space-y-6">
-          {NavbarMenu.map((menu) => (
-            <li key={menu.id} className="w-full">
-              <a
-                href={menu.path}
-                onClick={() => setIsOpen(false)}
-                className="block w-full py-2 text-lg font-medium text-gray-700 hover:text-blue-500 transition"
+            <h2 className="text-2xl font-bold mb-4 text-blue-900 text-center">
+              Demande de devis
+            </h2>
+
+            <form onSubmit={handleSubmit} className="grid gap-4">
+              <input
+                type="text"
+                name="nom"
+                placeholder="Nom complet"
+                required
+                className="border p-3 rounded-md w-full"
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                required
+                className="border p-3 rounded-md w-full"
+              />
+              <input
+                type="text"
+                name="entreprise"
+                placeholder="Nom de l’entreprise"
+                className="border p-3 rounded-md w-full"
+              />
+              <textarea
+                name="message"
+                placeholder="Décrivez votre besoin"
+                required
+                className="border p-3 rounded-md w-full h-32"
+              ></textarea>
+              <button
+                type="submit"
+                className="w-full py-2 bg-blue-900 text-white rounded-md hover:bg-blue-800 transition"
               >
-                {menu.title}
-              </a>
-            </li>
-          ))}
-        </ul>
-
-        <div className="px-6 mt-6">
-          <button className="primary-btn w-full">Demander un devis</button>
+                Envoyer
+              </button>
+            </form>
+          </div>
         </div>
-      </div>
-
-      {/* Overlay sombre (pour fermer la sidebar) */}
-      {isOpen && (
-        <div
-          onClick={toggleMenu}
-          className="fixed inset-0 bg-black bg-opacity-40 z-30 lg:hidden"
-        ></div>
       )}
-    </nav>
+    </>
   );
 };
 

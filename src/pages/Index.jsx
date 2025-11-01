@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Hero from '../components/Hero/Hero'
 import Banner from '../components/Banner/Banner'
 import hero from "../assets/hero.jpg"
@@ -12,140 +12,165 @@ import academy from "../assets/academy.jpg"
 import alec from "../assets/alec.jpg"
 
 function Index() {
+  const [showForm, setShowForm] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const subject = encodeURIComponent("Demande de devis");
+    const body = encodeURIComponent(`
+Nom complet : ${formData.get("nom")}
+Email : ${formData.get("email")}
+Entreprise : ${formData.get("entreprise")}
+Message : ${formData.get("message")}
+    `);
+    window.location.href = `mailto:paradisenumerique@gmail.com?subject=${subject}&body=${body}`;
+  };
+
   return (
-    <div className='overflow-x-hidden bg-white'>
+    <div id="hero" className='overflow-x-hidden bg-white'>
+
       {/* Section Hero */}
       <Hero />
 
       {/* Section Services */}
-<section className="relative w-full overflow-hidden flex flex-col items-center justify-start min-h-[650px]">
-  {/* Image de fond */}
-  <img
-    src={hero}
-    alt="Services"
-    className="absolute inset-0 w-full h-full object-cover"
-  />
-
-  {/* Masque bleu sombre avec texte centré */}
-  <div className="absolute inset-0 bg-blue-900/80 flex flex-col items-center text-white px-4 pt-16 sm:pt-20">
-    <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 drop-shadow-lg text-center">
-      NOS SERVICES
-    </h1>
-    <p className="text-sm sm:text-base md:text-lg max-w-2xl text-center mb-8 sm:mb-10">
-      Des solutions digitales complètes pour propulser votre entreprise vers le succès.
-    </p>
-
-    {/* Grille des cartes */}
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 justify-center items-center w-full max-w-6xl px-2 sm:px-4 md:px-6">
-      {/* Carte 1 */}
-      <div className="bg-white rounded-2xl shadow-md hover:shadow-lg hover:scale-105 transform transition-all duration-300 overflow-hidden border border-gray-100 flex flex-col items-center text-center">
-        <img
-          src={internet}
-          alt="Création de site web"
-          className="w-full h-40 sm:h-48 object-cover"
-        />
-        <div className="p-4 sm:p-5 flex flex-col items-center">
-          <h3 className="text-lg sm:text-xl font-semibold text-blue-900 mb-2">
-            Création de site web
-          </h3>
-          <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
-            Sites web modernes, responsives et optimisés pour une expérience utilisateur exceptionnelle.
+      <section id='services' className="relative w-full overflow-hidden flex flex-col items-center justify-start min-h-[650px]">
+        <img src={hero} alt="Services" className="absolute inset-0 w-full h-full object-cover" />
+        <div className="relative z-10 bg-blue-900/80 w-full flex flex-col items-center text-white px-4 pt-16 sm:pt-20 pb-16">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 text-center">NOS SERVICES</h1>
+          <p className="text-sm sm:text-base md:text-lg max-w-2xl text-center mb-8 sm:mb-10">
+            Des solutions digitales complètes pour propulser votre entreprise vers le succès.
           </p>
-        </div>
-      </div>
 
-      {/* Carte 2 */}
-      <div className="bg-white rounded-2xl shadow-md hover:shadow-lg hover:scale-105 transform transition-all duration-300 overflow-hidden border border-gray-100 flex flex-col items-center text-center">
-        <img
-          src={campagne}
-          alt="Marketing digital"
-          className="w-full h-40 sm:h-48 object-cover"
-        />
-        <div className="p-4 sm:p-5 flex flex-col items-center">
-          <h3 className="text-lg sm:text-xl font-semibold text-blue-900 mb-2">
-            Marketing digital
-          </h3>
-          <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
-            Campagnes ciblées, référencement SEO et gestion des réseaux sociaux.
-          </p>
-        </div>
-      </div>
-
-      {/* Carte 3 */}
-      <div className="bg-white rounded-2xl shadow-md hover:shadow-lg hover:scale-105 transform transition-all duration-300 overflow-hidden border border-gray-100 flex flex-col items-center text-center">
-        <img
-          src={logopro}
-          alt="Design graphique"
-          className="w-full h-40 sm:h-48 object-cover"
-        />
-        <div className="p-4 sm:p-5 flex flex-col items-center">
-          <h3 className="text-lg sm:text-xl font-semibold text-blue-900 mb-2">
-            Design graphique
-          </h3>
-          <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
-            Création d’identités visuelles fortes et cohérentes pour votre marque.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    {/* Bouton Découvrir plus */}
-    <a
-      href="/services"
-      className="primary-btn mt-6 sm:mt-8 px-5 sm:px-6 py-2 sm:py-3"
-    >
-      Découvrir plus
-    </a>
-  </div>
-</section>
-
-
-      {/* Section Partenaire */}
-      <section className="w-full bg-gray-50 py-16">
-        <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12 max-w-6xl mx-auto px-6">
-          {/* Image */}
-          <div className="flex-shrink-0 w-full md:w-1/3">
-            <img
-              src={alec}
-              alt="Alec PDG"
-              className="w-full h-auto rounded-xl shadow-xl object-cover"
-            />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 w-full max-w-6xl px-2 sm:px-4 md:px-6">
+            {[
+              {img: internet, title: "Création de site web", text: "Sites web modernes, responsives et optimisés pour une expérience utilisateur exceptionnelle."},
+              {img: campagne, title: "Marketing digital", text: "Campagnes ciblées, référencement SEO et gestion des réseaux sociaux."},
+              {img: logopro, title: "Design graphique", text: "Création d’identités visuelles fortes et cohérentes pour votre marque."}
+            ].map((s, i)=>(
+              <div key={i} className="bg-white rounded-2xl shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 overflow-hidden border border-gray-100 text-center">
+                <img src={s.img} alt={s.title} className="w-full h-40 sm:h-48 object-cover" />
+                <div className="p-4 sm:p-5">
+                  <h3 className="text-lg sm:text-xl font-semibold text-blue-900 mb-2">{s.title}</h3>
+                  <p className="text-gray-600 text-sm sm:text-base leading-relaxed">{s.text}</p>
+                </div>
+              </div>
+            ))}
           </div>
 
-          {/* Texte */}
-          <div className="w-full md:w-2/3 text-center md:text-left">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-blue-900">
-              LE PARTENAIRE DU NUMERIQUE
-            </h1>
+          <button
+            onClick={() => setShowForm(true)}
+            className="primary-btn mt-8 px-6 py-3 bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-semibold rounded-xl shadow-md transition"
+          >
+            Demander un devis
+          </button>
+        </div>
+      </section>
+
+      {/* Formulaire popup */}
+      {showForm && (
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
+          <div className="bg-white p-8 rounded-2xl shadow-lg w-full max-w-md relative">
+            <button
+              onClick={() => setShowForm(false)}
+              className="absolute top-3 right-4 text-gray-500 hover:text-red-500 text-2xl font-bold"
+            >
+              &times;
+            </button>
+            <h2 className="text-2xl font-bold mb-4 text-blue-900 text-center">Demande de devis</h2>
+            <form onSubmit={handleSubmit} className="grid gap-4">
+              <input type="text" name="nom" placeholder="Nom complet" required className="border p-3 rounded-md w-full" />
+              <input type="email" name="email" placeholder="Email" required className="border p-3 rounded-md w-full" />
+              <input type="text" name="entreprise" placeholder="Nom de l’entreprise" className="border p-3 rounded-md w-full" />
+              <textarea name="message" placeholder="Décrivez votre besoin" required className="border p-3 rounded-md w-full h-32"></textarea>
+              <button type="submit" className="w-full py-2 bg-blue-900 text-white rounded-md hover:bg-blue-800 transition">
+                Envoyer
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* Section À propos */}
+      <section id="about" className="bg-gray-100 py-20">
+        <div className="max-w-6xl mx-auto px-6 md:flex md:items-center md:gap-12">
+          <div className="md:w-1/2 mb-8 md:mb-0">
+            <img src={alec} alt="Alec PDG" className="w-full h-auto rounded-xl shadow-xl object-cover" />
+          </div>
+          <div className="md:w-1/2 text-center md:text-left">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-blue-900">LE PARTENAIRE DU NUMERIQUE</h2>
             <p className="text-gray-600 text-sm sm:text-base md:text-lg leading-relaxed">
               Paradise Numérique est une agence spécialisée dans les solutions informatiques et digitales basée à Libreville, Gabon. Nous aidons les entreprises à développer leur présence en ligne, optimiser leurs systèmes et automatiser leurs processus grâce à des technologies innovantes.
               <br /><br />
-              Notre équipe combine expertise technique et créativité pour fournir des services adaptés à vos besoins : création de sites web, marketing digital, design graphique, développement mobile et support informatique. Nous accompagnons chaque client pour transformer ses idées en projets concrets et rentables.
+              Notre équipe combine expertise technique et créativité pour fournir des services adaptés à vos besoins : création de sites web, marketing digital, design graphique, développement mobile et support informatique.
             </p>
           </div>
         </div>
       </section>
 
+      {/* Section Nos Partenaires */}
+      <section id="partners" className="bg-white py-16">
+        <div className="max-w-6xl mx-auto px-6 text-center">
+          <h2 className="text-3xl font-bold text-blue-900 mb-8">Nos Partenaires</h2>
+          <div className="flex flex-wrap items-center justify-center gap-8">
+            {[{img:onix,name:"OnixFoot"},{img:ekena,name:"Ekena"},{img:opopo,name:"OPOPO"},{img:academy,name:"Academy Sport"}].map((p,i)=>(
+              <div key={i} className="flex flex-col items-center">
+                <img src={p.img} alt={p.name} className="h-16 sm:h-20 object-contain mb-2"/>
+                <span className="text-gray-700 font-medium">{p.name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Section Notre Team */}
+      <section id="team" className="bg-yellow-300 py-20">
+        <div className="max-w-6xl mx-auto px-6 text-center">
+          <h2 className="text-3xl font-bold text-blue-900 mb-8">Notre Équipe</h2>
+          <p className="text-gray-600 max-w-2xl mx-auto mb-12">Une équipe jeune, créative et passionnée par le digital, dédiée à la réussite de nos clients.</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+            {[ 
+              {img: alec, name: "Alec NANG", role: "CEO & Développeur Web"},
+              {img: ekena, name: "Ekena", role: "Designer Graphique"},
+              {img: academy, name: "Academy", role: "Marketing & Communication"}
+            ].map((member,i)=>(
+              <div key={i} className="bg-white rounded-2xl shadow-md p-6 hover:shadow-lg transition transform hover:scale-105">
+                <img src={member.img} alt={member.name} className="w-32 h-32 object-cover rounded-full mx-auto mb-4" />
+                <h3 className="text-lg font-semibold text-blue-900">{member.name}</h3>
+                <p className="text-gray-600 text-sm">{member.role}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+{/* Footer / Banner */}
       <section>
         <Banner />
       </section>
-
-      {/* Section Logos partenaires */}
-      <div className="bg-yellow-500 w-full shadow-md py-6 flex flex-col items-center justify-center">
-        <h2 className="text-white text-xl sm:text-2xl font-semibold text-center mb-4">
-          Ils nous font confiance
-        </h2>
-
-        {/* Logos des partenaires */}
-        <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-8">
-          {[{img:onix,name:"OnixFoot"},{img:ekena,name:"Ekena"},{img:opopo,name:"OPOPO"},{img:academy,name:"Academy Sport"}].map((p, i)=>(
-            <div key={i} className="flex flex-col items-center">
-              <img src={p.img} alt={p.name} className="h-12 sm:h-16 object-contain"/>
-              <span className="text-white mt-1 sm:mt-2 text-xs sm:text-sm">{p.name}</span>
+      {/* Section Contact avant footer */}
+      <section id="contact" className="bg-blue-900 text-white py-20">
+        <div className="max-w-5xl mx-auto px-6 text-center">
+          <h2 className="text-3xl font-bold mb-6">Contactez-nous</h2>
+          <p className="mb-10 text-gray-200 max-w-2xl mx-auto">
+            Vous avez un projet ? Parlons-en ensemble ! Notre équipe est à votre écoute pour vous accompagner dans votre transformation digitale.
+          </p>
+          <div className="grid sm:grid-cols-3 gap-8">
+            <div>
+              <h4 className="font-semibold text-yellow-400 mb-2">📞 Téléphone</h4>
+              <p>+241 07 46 92 348</p>
             </div>
-          ))}
+            <div>
+              <h4 className="font-semibold text-yellow-400 mb-2">📧 Email</h4>
+              <p>paradisenumerique@gmail.com</p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-yellow-400 mb-2">📍 Adresse</h4>
+              <p>Libreville, Gabon</p>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
+
     </div>
   )
 }
