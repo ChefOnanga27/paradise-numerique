@@ -111,7 +111,7 @@ Message : ${formData.get("message")}
       {/* Section Nos Partenaires */}
       <section id="partners" className="bg-white py-16">
         <div className="max-w-6xl mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold text-blue-900 mb-8">Nos Partenaires</h2>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 text-center">NOS PARTENAIRE</h1>
           <div className="flex flex-wrap items-center justify-center gap-8">
             {[{img:onix,name:"OnixFoot"},{img:ekena,name:"Ekena"},{img:opopo,name:"OPOPO"},{img:academy,name:"Academy Sport"}].map((p,i)=>(
               <div key={i} className="flex flex-col items-center">
@@ -126,13 +126,13 @@ Message : ${formData.get("message")}
       {/* Section Notre Team */}
       <section id="team" className="bg-yellow-300 py-20">
         <div className="max-w-6xl mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold text-blue-900 mb-8">Notre Équipe</h2>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 text-center">NOTRE EQUIPE</h1>
           <p className="text-gray-600 max-w-2xl mx-auto mb-12">Une équipe jeune, créative et passionnée par le digital, dédiée à la réussite de nos clients.</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
             {[ 
-              {img: alec, name: "Alec NANG", role: "CEO & Développeur Web"},
-              {img: ekena, name: "Ekena", role: "Designer Graphique"},
-              {img: academy, name: "Academy", role: "Marketing & Communication"}
+              {img: alec, name: "Alec NANG", role: "CEO & Développeur back-end"},
+              {img: ekena, name: "LANDOU RENESCH", role: "Developpeur mobile"},
+              {img: academy, name: "MOUGOULA STEVINE", role: "Marketing & Communication,Developpeur front-end"}
             ].map((member,i)=>(
               <div key={i} className="bg-white rounded-2xl shadow-md p-6 hover:shadow-lg transition transform hover:scale-105">
                 <img src={member.img} alt={member.name} className="w-32 h-32 object-cover rounded-full mx-auto mb-4" />
@@ -150,7 +150,7 @@ Message : ${formData.get("message")}
       {/* Section Contact avant footer */}
       <section id="contact" className="bg-blue-900 text-white py-20">
         <div className="max-w-5xl mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold mb-6">Contactez-nous</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 text-center">CONTACTEZ-NOUS</h2>
           <p className="mb-10 text-gray-200 max-w-2xl mx-auto">
             Vous avez un projet ? Parlons-en ensemble ! Notre équipe est à votre écoute pour vous accompagner dans votre transformation digitale.
           </p>
