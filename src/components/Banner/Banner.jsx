@@ -8,7 +8,7 @@ import remove6 from "../../assets/remove6.png"
 
 function Banner() {
   const Banniere = [
-    { id: 1, image: onix, name: "Site E-commerce OnixFoot", link: "https://onixfoot.vercel.app/" },
+    { id: 1, image: onix, name: "Site vitrine OnixFoot", link: "https://onixfoot.vercel.app/" },
     { id: 2, image: adn, name: "Plateforme Adn-engineering", link: "https://adn-ingineering.vercel.app/#link" },
     { id: 3, image: gpm, name: "Site vitrine GPM", link: "https://gpm-jet.vercel.app/" },
     { id: 4, image: gaboil, name: "Site Gab'Oil", link: "https://gab-oil.vercel.app/" },

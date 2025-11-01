@@ -113,7 +113,7 @@ Message : ${formData.get("message")}
         <div className="max-w-6xl mx-auto px-6 text-center">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3  text-blue-900 text-center">NOS PARTENAIRE</h1>
           <div className="flex flex-wrap items-center justify-center gap-8">
-            {[{img:onix,name:"OnixFoot"},{img:ekena,name:"Ekena"},{img:opopo,name:"OPOPO"},{img:academy,name:"Academy Sport"}].map((p,i)=>(
+            {[{img:onix},{img:ekena},{img:opopo},{img:academy}].map((p,i)=>(
               <div key={i} className="flex flex-col items-center">
                 <img src={p.img} alt={p.name} className="h-16 sm:h-20 object-contain mb-2"/>
                 <span className="text-gray-700 font-medium">{p.name}</span>
