@@ -1,23 +1,23 @@
 import React from "react"
-import remove2 from "../../assets/remove2.png"
-import remove from "../../assets/remove.png"
-import remove4 from "../../assets/remove4.png"
-import remove3 from "../../assets/remove3.png"
-import remove5 from "../../assets/remove5.png"
+import adn from "../../assets/adn.jpg"
+import onix from "../../assets/onix.jpg"
+import gaboil from "../../assets/gaboil.png"
+import gpm from "../../assets/gpm.jpg"
+import artiz from "../../assets/artiz.png"
 import remove6 from "../../assets/remove6.png"
 
 function Banner() {
   const Banniere = [
-    { id: 1, image: remove, name: "Site E-commerce OnixFoot", link: "https://onixfoot.com" },
-    { id: 2, image: remove2, name: "Plateforme Ekena Beauty", link: "https://ekenabeauty.com" },
-    { id: 3, image: remove3, name: "Application OPOPO Livraison", link: "https://opopo.app" },
-    { id: 4, image: remove4, name: "Site Academy Sport", link: "https://academysport.com" },
-    { id: 5, image: remove5, name: "Système de Gestion Paradise Pro", link: "https://paradisepro.com" },
-    { id: 6, image: remove6, name: "Portfolio Alec Dev", link: "https://alecdev.com" },
+    { id: 1, image: onix, name: "Site E-commerce OnixFoot", link: "https://onixfoot.vercel.app/" },
+    { id: 2, image: adn, name: "Plateforme Adn-engineering", link: "https://adn-ingineering.vercel.app/#link" },
+    { id: 3, image: gpm, name: "Site vitrine GPM", link: "https://gpm-jet.vercel.app/" },
+    { id: 4, image: gaboil, name: "Site Gab'Oil", link: "https://gab-oil.vercel.app/" },
+    { id: 5, image: artiz, name: "Site E-commerce Artiz", link: "https://artiz-ia.vercel.app/" },
+    { id: 6, image: remove6, name: "Commerce en Ligne Store-Gabon", link: "https://storegabon.vercel.app/" },
   ]
 
   return (
-    <section className="py-14 md:py-24 bg-white">
+    <section id="team" className="py-14 md:py-24 bg-white">
       <div className="max-w-6xl mx-auto px-6">
         <h2 className="text-3xl md:text-5xl font-bold text-center text-blue-900 mb-12">
           NOS REALISATIONS
