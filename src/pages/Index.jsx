@@ -111,7 +111,7 @@ Message : ${formData.get("message")}
       {/* Section Nos Partenaires */}
       <section id="partners" className="bg-white py-16">
         <div className="max-w-6xl mx-auto px-6 text-center">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 text-center">NOS PARTENAIRE</h1>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3  text-blue-900 text-center">NOS PARTENAIRE</h1>
           <div className="flex flex-wrap items-center justify-center gap-8">
             {[{img:onix,name:"OnixFoot"},{img:ekena,name:"Ekena"},{img:opopo,name:"OPOPO"},{img:academy,name:"Academy Sport"}].map((p,i)=>(
               <div key={i} className="flex flex-col items-center">
@@ -126,8 +126,8 @@ Message : ${formData.get("message")}
       {/* Section Notre Team */}
       <section id="team" className="bg-yellow-300 py-20">
         <div className="max-w-6xl mx-auto px-6 text-center">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 text-center">NOTRE EQUIPE</h1>
-          <p className="text-gray-600 max-w-2xl mx-auto mb-12">Une équipe jeune, créative et passionnée par le digital, dédiée à la réussite de nos clients.</p>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl  text-blue-900 font-bold mb-3 text-center">NOTRE EQUIPE</h1>
+          <p className=" text-blue-900 max-w-2xl mx-auto mb-12">Une équipe jeune, créative et passionnée par le digital, dédiée à la réussite de nos clients.</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
             {[ 
               {img: alec, name: "Alec NANG", role: "CEO & Développeur back-end"},
@@ -137,7 +137,7 @@ Message : ${formData.get("message")}
               <div key={i} className="bg-white rounded-2xl shadow-md p-6 hover:shadow-lg transition transform hover:scale-105">
                 <img src={member.img} alt={member.name} className="w-32 h-32 object-cover rounded-full mx-auto mb-4" />
                 <h3 className="text-lg font-semibold text-blue-900">{member.name}</h3>
-                <p className="text-gray-600 text-sm">{member.role}</p>
+                <p className=" text-blue-900 text-sm">{member.role}</p>
               </div>
             ))}
           </div>
