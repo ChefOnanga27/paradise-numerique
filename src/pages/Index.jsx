@@ -8,7 +8,6 @@ import logopro from "../assets/logo pro.png"
 import onix from "../assets/onix.jpg"
 import ecole241 from "../assets/ecole241.jpg"
 import opopo from "../assets/opopo.jpg"
-import academy from "../assets/academy.jpg"
 import alec from "../assets/alec.jpg"
 import stevine from "../assets/stevine.jpg"
 import jc from "../assets/jc.jpg"
@@ -136,7 +135,7 @@ Message : ${formData.get("message")}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
             {[ 
               {img: alec, name: "Alec NANG", role: "CEO & Développeur back-end"},
-              {img: homme, name: "LANDOU RENESCH", role: "Developpeur mobile"},
+              {img: homme, name: "LANDOU RENESCH", role: "Developpeur mobile,Designer"},
               {img: stevine, name: "MOUGOULA STEVINE", role: "Marketing & Communication,Developpeur front-end"},
               {img: jc, name: "Jean-Claude SPERANDEZI", role: "Developpeur front-end"},
               {img: homme3, name: "LEE-CHARLY ", role: "VIBE CODEUR"},
