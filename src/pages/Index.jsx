@@ -6,11 +6,16 @@ import internet from "../assets/internet.jpg"
 import campagne from "../assets/campagne.png"
 import logopro from "../assets/logo pro.png"
 import onix from "../assets/onix.jpg"
-import ekena from "../assets/ekena.jpg"
+import ecole241 from "../assets/ecole241.jpg"
 import opopo from "../assets/opopo.jpg"
 import academy from "../assets/academy.jpg"
 import alec from "../assets/alec.jpg"
-
+import stevine from "../assets/stevine.jpg"
+import jc from "../assets/jc.jpg"
+import homme from "../assets/homme.png"
+import homme2 from "../assets/homme2.png"
+import homme3 from "../assets/homme3.png"
+import artiz from "../assets/artiz.png"
 function Index() {
   const [showForm, setShowForm] = useState(false);
 
@@ -113,7 +118,7 @@ Message : ${formData.get("message")}
         <div className="max-w-6xl mx-auto px-6 text-center">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3  text-blue-900 text-center">NOS PARTENAIRE</h1>
           <div className="flex flex-wrap items-center justify-center gap-8">
-            {[{img:onix},{img:ekena},{img:opopo},{img:academy}].map((p,i)=>(
+            {[{img:onix},{img:ecole241},{img:opopo},{img:artiz}].map((p,i)=>(
               <div key={i} className="flex flex-col items-center">
                 <img src={p.img} alt={p.name} className="h-16 sm:h-20 object-contain mb-2"/>
                 <span className="text-gray-700 font-medium">{p.name}</span>
@@ -131,8 +136,11 @@ Message : ${formData.get("message")}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
             {[ 
               {img: alec, name: "Alec NANG", role: "CEO & Développeur back-end"},
-              {img: ekena, name: "LANDOU RENESCH", role: "Developpeur mobile"},
-              {img: academy, name: "MOUGOULA STEVINE", role: "Marketing & Communication,Developpeur front-end"}
+              {img: homme, name: "LANDOU RENESCH", role: "Developpeur mobile"},
+              {img: stevine, name: "MOUGOULA STEVINE", role: "Marketing & Communication,Developpeur front-end"},
+              {img: jc, name: "Jean-Claude SPERANDEZI", role: "Developpeur front-end"},
+              {img: homme3, name: "LEE-CHARLY ", role: "VIBE CODEUR"},
+              {img: homme2, name: "Isaaq OMAR", role: "Developpeur Back-end"}
             ].map((member,i)=>(
               <div key={i} className="bg-white rounded-2xl shadow-md p-6 hover:shadow-lg transition transform hover:scale-105">
                 <img src={member.img} alt={member.name} className="w-32 h-32 object-cover rounded-full mx-auto mb-4" />
