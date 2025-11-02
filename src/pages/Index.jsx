@@ -3,8 +3,7 @@ import Hero from '../components/Hero/Hero'
 import Banner from '../components/Banner/Banner'
 import hero from "../assets/hero.jpg"
 import internet from "../assets/internet.jpg"
-import campagne from "../assets/campagne.png"
-import logopro from "../assets/logo pro.png"
+import belle from "../assets/belle.png"
 import onix from "../assets/onix.jpg"
 import ecole241 from "../assets/ecole241.jpg"
 import opopo from "../assets/opopo.jpg"
@@ -15,6 +14,8 @@ import homme from "../assets/homme.png"
 import homme2 from "../assets/homme2.png"
 import homme3 from "../assets/homme3.png"
 import artiz from "../assets/artiz.png"
+import mob from "../assets/mob.png"
+
 function Index() {
   const [showForm, setShowForm] = useState(false);
 
@@ -49,8 +50,8 @@ Message : ${formData.get("message")}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 w-full max-w-6xl px-2 sm:px-4 md:px-6">
             {[
               {img: internet, title: "Création de site web", text: "Sites web modernes, responsives et optimisés pour une expérience utilisateur exceptionnelle."},
-              {img: campagne, title: "Marketing digital", text: "Campagnes ciblées, référencement SEO et gestion des réseaux sociaux."},
-              {img: logopro, title: "Design graphique", text: "Création d’identités visuelles fortes et cohérentes pour votre marque."}
+              {img: belle, title: "Marketing digital", text: "Campagnes ciblées, référencement SEO et gestion des réseaux sociaux."},
+              {img: mob, title: "Création d'application mobile", text: "Développement d’applications mobiles performantes et intuitives pour booster votre activité."}
             ].map((s, i)=>(
               <div key={i} className="bg-white rounded-2xl shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 overflow-hidden border border-gray-100 text-center">
                 <img src={s.img} alt={s.title} className="w-full h-40 sm:h-48 object-cover" />
